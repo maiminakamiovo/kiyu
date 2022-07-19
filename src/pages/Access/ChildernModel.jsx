@@ -97,6 +97,11 @@ const Childern = (props, ref) => {
             <Input></Input>
           </Form.Item>
         </Col>
+        <Col xxl={16} xl={16} lg={16} sm={24} xs={24}>
+          <Form.Item {...formItemLayout} name="Kakuretakikenchōsanohindo" label="隐患排查频率">
+            <Input></Input>
+          </Form.Item>
+        </Col>
       </Modal>
     </Form>
   );

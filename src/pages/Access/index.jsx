@@ -232,6 +232,8 @@ const Testpage = () => {
     const newValue = JSON.parse(JSON.stringify(value));
     newValue.Shiriarunanbā = data.length + 1;
     newValue.id = data.length + 1;
+    newValue.Kaishijikan= moment(newValue.Kaishijikan).format('YYYY-MM-DD HH:mm')
+    newValue.Shūryōjikan= moment(newValue.Shūryōjikan).format('YYYY-MM-DD HH:mm')
     addData.splice(addData.length, 1, newValue);
     setData(addData);
     handleModalVisible(false);
@@ -310,7 +312,11 @@ const Testpage = () => {
                   <Input></Input>
                 </Form.Item>
               </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}></Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+              <Form.Item {...formItemLayout} name="Kakuretakikenchōsanohindo" label="隐患排查频率">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
             </Row>
           ) : null}
           <Row>
