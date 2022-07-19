@@ -7,6 +7,7 @@ import {
 import { Access, useAccess } from '@umijs/max';
 import {Form, Button, Card,Input,Row,Col, Table,DatePicker} from 'antd';
 import Childern from "./ChildernModel"
+import { log } from 'console';
 
 
 const formItemLayout = {
@@ -151,6 +152,8 @@ setSearchValue(newData.filter(index=>index[element]===params[element]))
   };
 
   const getChildernValue=(value)=>{
+    // 子组件通过ref传值过来 通过myRef.current.getFieldsValue()取到我子组件from表单提交的值
+    console.log(myRef.current.getFieldsValue( ));
     console.log(value);
     const addData=JSON.parse(JSON.stringify(data))
     const newValue=JSON.parse(JSON.stringify(value))

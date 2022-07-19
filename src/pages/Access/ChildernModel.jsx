@@ -9,7 +9,7 @@ const [modalVisible,setModalVisible]=useState(thsiVi)
 useEffect(() => {
   setModalVisible(thsiVi)
 },[thsiVi])
-console.log(modalVisible);
+console.log(ref);
 const formItemLayout = {
     labelCol: { 
       md: { span: 10 },
@@ -32,7 +32,7 @@ const formItemLayout = {
   };
 console.log(modalVisible);
 return (
-  <Form form={form} ref={props.ref}  >
+  <Form form={form} ref={ref}  >
     <Modal title="新增" visible={modalVisible} footer={<Button  htmlType="submit"  onClick={()=>props.getValue(form.getFieldsValue())} >确定</Button>} >
    
     <Col xxl={16} xl={16} lg={16} sm={24} xs={24}>
