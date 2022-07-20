@@ -32,7 +32,7 @@ const Testpage = () => {
   const [searchValue, setSearchValue] = useState([]);
   const [createModalVisible, handleModalVisible] = useState(false);
   const myRef = useRef(null);
-  const [finallyParams,setFinallyParams]=useState(false)
+  // const [finallyParams,setFinallyParams]=useState(false)
   const [data, setData] = useState([
     {
       Shiriarunanbā: 1,
@@ -253,8 +253,6 @@ const Testpage = () => {
     setData(addData);
     handleModalVisible(false);
   };
-console.log(finallyParams);
-console.log(searchValue);
   return (
     <PageContainer
       ghost
