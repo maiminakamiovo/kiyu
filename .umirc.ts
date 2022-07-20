@@ -8,6 +8,7 @@ export default defineConfig({
   request: {},
   layout: {
     title: "umi",
+    logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
   },
 
   routes: [
@@ -23,7 +24,7 @@ export default defineConfig({
     },
 
     {
-      name: "权限演示",
+      name: "基本的增删改查",
       path: "/access",
       component: "./Access",
     },
@@ -33,11 +34,11 @@ export default defineConfig({
       path: "/table",
       component: "./Table",
     },
-    // {
-    //   name: " 测试页面",
-    //   path: "/testpage",
-    //   component: "./src/pages/TestPage/Testpage.jsx",
-    // },
+    {
+      name: " 测试页面",
+      path: "/hookls",
+      component: "./Hookls",
+    },
   ],
 
   npmClient: "npm",

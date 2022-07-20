@@ -402,7 +402,6 @@ const Testpage = () => {
         title="隐患排查计划"
         extra={
           <Button type="primary" onClick={() => handleModalVisible(true)}>
-            {' '}
             <PlusOutlined />
             新增
           </Button>
