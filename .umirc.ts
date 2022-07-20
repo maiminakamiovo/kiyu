@@ -24,18 +24,18 @@ export default defineConfig({
     },
 
     {
-      name: "基本的增删改查",
+      name: "增删改查示例",
       path: "/access",
       component: "./Access",
     },
 
     {
-      name: " dd",
+      name: "Table示例",
       path: "/table",
       component: "./Table",
     },
     {
-      name: " 测试页面",
+      name: " flex示例",
       path: "/hookls",
       component: "./Hookls",
     },
