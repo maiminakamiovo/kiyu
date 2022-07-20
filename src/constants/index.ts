@@ -1,1 +1,1 @@
-export const DEFAULT_NAME = 'KIYU';
+export const DEFAULT_NAME = 'kiying';
