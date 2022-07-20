@@ -200,22 +200,14 @@ const Testpage = () => {
 
   const uuidv4 = () => {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
-      (
-        c ^
-        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-      ).toString(16),
+      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
     );
   };
 
   const onFinish = (values) => {
     // 将有值的查询条件过滤出来
     const params = Object.keys(values)
-      .filter(
-        (key) =>
-          values[key] !== null &&
-          values[key] !== undefined &&
-          values[key] !== '',
-      )
+      .filter((key) => values[key] !== null && values[key] !== undefined && values[key] !== '')
       .reduce((acc, key) => ({ ...acc, [key]: values[key] }), {});
     const keyArray = [];
     // 查询条件从始至终就拷贝原始数据就好了
@@ -242,16 +234,10 @@ const Testpage = () => {
         for (let index = 0; index < keyArray.length; index++) {
           const element = keyArray[index];
           if (element === 'Shūryōjikan' || element === 'Kaishijikan') {
-            params[element] = moment(params[element]).format(
-              'YYYY-MM-DD HH:mm',
-            );
+            params[element] = moment(params[element]).format('YYYY-MM-DD HH:mm');
           }
-          newData = newData.filter(
-            (index) => index[element] === params[element],
-          );
-          setSearchValue(
-            newData.filter((index) => index[element] === params[element]),
-          );
+          newData = newData.filter((index) => index[element] === params[element]);
+          setSearchValue(newData.filter((index) => index[element] === params[element]));
         }
       });
     }
@@ -268,12 +254,8 @@ const Testpage = () => {
     const newValue = JSON.parse(JSON.stringify(value));
     newValue.Shiriarunanbā = data.length + 1;
     newValue.id = data.length + 1;
-    newValue.Kaishijikan = moment(newValue.Kaishijikan).format(
-      'YYYY-MM-DD HH:mm',
-    );
-    newValue.Shūryōjikan = moment(newValue.Shūryōjikan).format(
-      'YYYY-MM-DD HH:mm',
-    );
+    newValue.Kaishijikan = moment(newValue.Kaishijikan).format('YYYY-MM-DD HH:mm');
+    newValue.Shūryōjikan = moment(newValue.Shūryōjikan).format('YYYY-MM-DD HH:mm');
     addData.splice(addData.length, 1, newValue);
     setData(addData);
     handleModalVisible(false);
@@ -289,11 +271,7 @@ const Testpage = () => {
         <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
           <Row>
             <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item
-                {...formItemLayout}
-                name="Hazādochekkurisuto"
-                label="隐患排查清单"
-              >
+              <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
                 <Input></Input>
               </Form.Item>
             </Col>
@@ -303,11 +281,7 @@ const Testpage = () => {
               </Form.Item>
             </Col>
             <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item
-                {...formItemLayout}
-                name="Kaishijikan"
-                label="预计开始时间"
-              >
+              <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
                 <DatePicker
                   style={{ width: '100%' }}
                   showTime={{ defaultValue: moment('00:00:00', 'HH:mm') }}
@@ -325,20 +299,12 @@ const Testpage = () => {
           {expandForm ? (
             <Row>
               <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item
-                  {...formItemLayout}
-                  name="Tantōbumon"
-                  label="负责部门"
-                >
+                <Form.Item {...formItemLayout} name="Tantōbumon" label="负责部门">
                   <Input></Input>
                 </Form.Item>
               </Col>
               <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item
-                  {...formItemLayout}
-                  name="Shūryōjikan"
-                  label="预计结束时间"
-                >
+                <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
                   <DatePicker
                     style={{ width: '100%' }}
                     showTime={{ defaultValue: moment('00:00:00', 'HH:mm') }}
@@ -365,19 +331,10 @@ const Testpage = () => {
           <Row>
             <Col xxl={19} xl={19} lg={14} sm={14} xs={24}></Col>
             <Col xxl={5} xl={5} lg={10} sm={20} xs={20}>
-              <Button
-                type="primary"
-                style={{ marginLeft: 20 }}
-                htmlType="submit"
-              >
+              <Button type="primary" style={{ marginLeft: 20 }} htmlType="submit">
                 查询
               </Button>
-              <Button
-                style={{ marginLeft: 20 }}
-                type="primary"
-                htmlType="submit"
-                onClick={onReset}
-              >
+              <Button style={{ marginLeft: 20 }} type="primary" htmlType="submit" onClick={onReset}>
                 重置
               </Button>
               <a style={{ marginLeft: 8 }} onClick={toggleForm}>

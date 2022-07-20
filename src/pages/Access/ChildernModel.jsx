@@ -34,20 +34,13 @@ const Childern = (props, ref) => {
         title="新增"
         visible={modalVisible}
         footer={
-          <Button
-            htmlType="submit"
-            onClick={() => props.getValue(form.getFieldsValue())}
-          >
+          <Button htmlType="submit" onClick={() => props.getValue(form.getFieldsValue())}>
             确定
           </Button>
         }
       >
         <Col xxl={16} xl={16} lg={16} sm={24} xs={24}>
-          <Form.Item
-            {...formItemLayout}
-            name="Hazādochekkurisuto"
-            label="隐患排查清单"
-          >
+          <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
             <Input></Input>
           </Form.Item>
         </Col>
@@ -57,11 +50,7 @@ const Childern = (props, ref) => {
           </Form.Item>
         </Col>
         <Col xxl={16} xl={16} lg={16} sm={24} xs={24}>
-          <Form.Item
-            {...formItemLayout}
-            name="Kaishijikan"
-            label="预计开始时间"
-          >
+          <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
             <DatePicker
               style={{ width: '100%' }}
               showTime={{ defaultValue: moment('00:00:00', 'HH:mm') }}
@@ -80,11 +69,7 @@ const Childern = (props, ref) => {
           </Form.Item>
         </Col>
         <Col xxl={16} xl={16} lg={16} sm={24} xs={24}>
-          <Form.Item
-            {...formItemLayout}
-            name="Shūryōjikan"
-            label="预计结束时间"
-          >
+          <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
             <DatePicker
               style={{ width: '100%' }}
               showTime={{ defaultValue: moment('00:00:00', 'HH:mm') }}
