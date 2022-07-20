@@ -262,6 +262,7 @@ const Testpage = () => {
     setSearchValue(data);
   };
 
+  
   const getChildernValue = (value) => {
     // 子组件通过ref传值过来 通过myRef.current.getFieldsValue()取到我子组件from表单提交的值
     const addData = JSON.parse(JSON.stringify(data));
