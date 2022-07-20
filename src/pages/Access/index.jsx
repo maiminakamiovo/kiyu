@@ -1,7 +1,6 @@
 import { DownOutlined, PlusOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button, Card, Col, DatePicker, Form, Input, Row, Table } from 'antd';
-import { log } from 'console';
 import moment from 'moment';
 import { useRef, useState } from 'react';
 import Childern from './ChildernModel';
@@ -199,15 +198,30 @@ const Testpage = () => {
     },
   ];
 
+  const uuidv4 = () => {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+      (
+        c ^
+        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+      ).toString(16),
+    );
+  };
+
   const onFinish = (values) => {
     // 将有值的查询条件过滤出来
     const params = Object.keys(values)
-      .filter((key) => values[key] !== null && values[key] !== undefined&&values[key] !== '')
+      .filter(
+        (key) =>
+          values[key] !== null &&
+          values[key] !== undefined &&
+          values[key] !== '',
+      )
       .reduce((acc, key) => ({ ...acc, [key]: values[key] }), {});
     const keyArray = [];
     // 查询条件从始至终就拷贝原始数据就好了
-    let newData = JSON.parse(JSON.stringify( data));
-    console.log(params); 
+    let newData = JSON.parse(JSON.stringify(data));
+    console.log(params);
+    console.log(Object.values(params).length === 0);
     // 没必要搞这么复杂 在上面设置一下 &&values[key] !== ''  过滤值为""的key
     // console.log(Object.values(params).filter(index=>index!==''));
     // if (Object.values(params).length===0 ) {
@@ -218,20 +232,29 @@ const Testpage = () => {
     // }else{
     //   setFinallyParams(false)
     // }
-    Object.keys(params).forEach((s, v) => {
-      keyArray.push(s);
-      for (let index = 0; index < keyArray.length; index++) {
-        const element = keyArray[index];
-        if (element === 'Shūryōjikan' || element === 'Kaishijikan') {
-          params[element] = moment(params[element]).format('YYYY-MM-DD HH:mm');
-        }
-        newData = newData.filter((index) => index[element] === params[element]);
-        setSearchValue(
-          newData.filter((index) => index[element] === params[element]),
-        );
-      }
-    });
 
+    // 解决查询条件全部清空无法重新获取列表数据问题
+    if (Object.values(params).length < 1) {
+      setSearchValue(newData);
+    } else {
+      Object.keys(params).forEach((s, v) => {
+        keyArray.push(s);
+        for (let index = 0; index < keyArray.length; index++) {
+          const element = keyArray[index];
+          if (element === 'Shūryōjikan' || element === 'Kaishijikan') {
+            params[element] = moment(params[element]).format(
+              'YYYY-MM-DD HH:mm',
+            );
+          }
+          newData = newData.filter(
+            (index) => index[element] === params[element],
+          );
+          setSearchValue(
+            newData.filter((index) => index[element] === params[element]),
+          );
+        }
+      });
+    }
   };
 
   const onReset = () => {
@@ -245,8 +268,12 @@ const Testpage = () => {
     const newValue = JSON.parse(JSON.stringify(value));
     newValue.Shiriarunanbā = data.length + 1;
     newValue.id = data.length + 1;
-    newValue.Kaishijikan= moment(newValue.Kaishijikan).format('YYYY-MM-DD HH:mm')
-    newValue.Shūryōjikan= moment(newValue.Shūryōjikan).format('YYYY-MM-DD HH:mm')
+    newValue.Kaishijikan = moment(newValue.Kaishijikan).format(
+      'YYYY-MM-DD HH:mm',
+    );
+    newValue.Shūryōjikan = moment(newValue.Shūryōjikan).format(
+      'YYYY-MM-DD HH:mm',
+    );
     addData.splice(addData.length, 1, newValue);
     setData(addData);
     handleModalVisible(false);
@@ -325,7 +352,11 @@ const Testpage = () => {
                 </Form.Item>
               </Col>
               <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item {...formItemLayout} name="Kakuretakikenchōsanohindo" label="隐患排查频率">
+                <Form.Item
+                  {...formItemLayout}
+                  name="Kakuretakikenchōsanohindo"
+                  label="隐患排查频率"
+                >
                   <Input></Input>
                 </Form.Item>
               </Col>
@@ -380,7 +411,7 @@ const Testpage = () => {
         <Table
           columns={columns}
           dataSource={searchValue.length > 0 ? searchValue : data}
-          rowKey="record.id"
+          rowKey={uuidv4()}
         ></Table>
       </Card>
       <Childern
