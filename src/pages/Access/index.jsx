@@ -1,6 +1,7 @@
 import { DownOutlined, PlusOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button, Card, Col, DatePicker, Form, Input, Row, Table } from 'antd';
+import { log } from 'console';
 import moment from 'moment';
 import { useRef, useState } from 'react';
 import Childern from './ChildernModel';
@@ -31,6 +32,7 @@ const Testpage = () => {
   const [searchValue, setSearchValue] = useState([]);
   const [createModalVisible, handleModalVisible] = useState(false);
   const myRef = useRef(null);
+  const [finallyParams,setFinallyParams]=useState(false)
   const [data, setData] = useState([
     {
       Shiriarunanbā: 1,
@@ -200,12 +202,24 @@ const Testpage = () => {
   const onFinish = (values) => {
     // 将有值的查询条件过滤出来
     const params = Object.keys(values)
-      .filter((key) => values[key] !== null && values[key] !== undefined)
+      .filter((key) => values[key] !== null && values[key] !== undefined&&values[key] !== '')
       .reduce((acc, key) => ({ ...acc, [key]: values[key] }), {});
     const keyArray = [];
+    // 查询条件从始至终就拷贝原始数据就好了
     let newData = JSON.parse(
-      JSON.stringify(searchValue.length > 0 ? searchValue : data),
+      JSON.stringify( data),
     );
+    console.log(params); 
+    // 没必要搞这么复杂 在上面设置一下 &&values[key] !== ''  过滤值为""的key
+    // console.log(Object.values(params).filter(index=>index!==''));
+    // if (Object.values(params).length===0 ) {
+    //   setFinallyParams(false)
+    // }
+    // if (Object.values(params).filter(index=>index!=='').length>0 ) {
+    //   setFinallyParams(true)
+    // }else{
+    //   setFinallyParams(false)
+    // }
     Object.keys(params).forEach((s, v) => {
       keyArray.push(s);
       for (let index = 0; index < keyArray.length; index++) {
@@ -219,6 +233,7 @@ const Testpage = () => {
         );
       }
     });
+
   };
 
   const onReset = () => {
@@ -238,7 +253,8 @@ const Testpage = () => {
     setData(addData);
     handleModalVisible(false);
   };
-
+console.log(finallyParams);
+console.log(searchValue);
   return (
     <PageContainer
       ghost
