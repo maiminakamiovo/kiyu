@@ -136,11 +136,21 @@ const Testpage = () => {
   };
 
   const Delete = (recond) => {
-    const dd = JSON.parse(JSON.stringify(data));
-    const { id } = recond;
-    const index = dd.findIndex((item) => item.id === id);
-    dd.splice(index, 1);
-    setData(dd);
+    console.log(recond);
+    // tode  没有做查询条件删除 状态
+    if (searchValue.length > 0) {
+      const newDeldata = JSON.parse(JSON.stringify(searchValue));
+      const { id } = recond;
+      const index = newDeldata.findIndex((item) => item.id === id);
+      newDeldata.splice(index, 1);
+      setSearchValue(newDeldata);
+    } else {
+      const dd = JSON.parse(JSON.stringify(data));
+      const { id } = recond;
+      const index = dd.findIndex((item) => item.id === id);
+      dd.splice(index, 1);
+      setData(dd);
+    }
   };
 
   const columns = [
