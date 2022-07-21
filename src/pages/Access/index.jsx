@@ -222,10 +222,7 @@ const Testpage = () => {
     const keyArray = [];
     // 查询条件从始至终就拷贝原始数据就好了
     let newData = JSON.parse(JSON.stringify(data));
-    console.log(params);
-    console.log(Object.values(params).length === 0);
     // 没必要搞这么复杂 在上面设置一下 &&values[key] !== ''  过滤值为""的key
-    // console.log(Object.values(params).filter(index=>index!==''));
     // if (Object.values(params).length===0 ) {
     //   setFinallyParams(false)
     // }

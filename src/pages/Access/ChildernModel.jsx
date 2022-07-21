@@ -9,7 +9,6 @@ const Childern = (props, ref) => {
   useEffect(() => {
     setModalVisible(thsiVi);
   }, [thsiVi]);
-  console.log(ref);
   const formItemLayout = {
     labelCol: {
       md: { span: 10 },
