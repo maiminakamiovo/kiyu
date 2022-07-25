@@ -2,7 +2,7 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { useState } from 'react';
 // import { Access, useAccess } from '@umijs/max';
-import { Button, Card, Col, Form, Input, Row, Table, Tabs } from 'antd';
+import { Button, Col, Form, Input, Row, Table, Tabs } from 'antd';
 
 const { TabPane } = Tabs;
 
@@ -316,83 +316,11 @@ const Testpage = () => {
     <PageContainer
       ghost
       header={{
-        title: 'table示例',
+        title: '隐患库',
       }}
     >
-      <Card bodyStyle={{ marginBottom: '32px' }}>
-        <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
-          <Row>
-            <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
-                <Input></Input>
-              </Form.Item>
-            </Col>
-            <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item {...formItemLayout} name="shuyo" label="负责人">
-                <Input></Input>
-              </Form.Item>
-            </Col>
-            <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
-                <Input></Input>
-              </Form.Item>
-            </Col>
-            <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-              <Form.Item {...formItemLayout} name="Eguzekyūta" label="执行人">
-                <Input></Input>
-              </Form.Item>
-            </Col>
-          </Row>
-
-          {expandForm ? (
-            <Row>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Tantōbumon" label="负责部门">
-                  <Input></Input>
-                </Form.Item>
-              </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
-                  <Input></Input>
-                </Form.Item>
-              </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="shu" label="状态">
-                  <Input></Input>
-                </Form.Item>
-              </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}></Col>
-            </Row>
-          ) : null}
-          <Row>
-            <Col xxl={19} xl={19} lg={14} sm={14} xs={24}></Col>
-            <Col xxl={5} xl={5} lg={10} sm={20} xs={20}>
-              <Button type="primary" style={{ marginLeft: 20 }} htmlType="submit">
-                查询
-              </Button>
-              <Button style={{ marginLeft: 20 }} type="primary" htmlType="submit" onClick={onReset}>
-                重置
-              </Button>
-              <a style={{ marginLeft: 8 }} onClick={toggleForm}>
-                {expandForm ? (
-                  <span>
-                    <UpOutlined />
-                    收起
-                  </span>
-                ) : (
-                  <span>
-                    <DownOutlined />
-                    展开
-                  </span>
-                )}
-              </a>
-            </Col>
-          </Row>
-        </Form>
-      </Card>
-
-      <Card
-        title="隐患排查计划"
+      {/* <Card
+        title="隐患排查计划" 
         // extra={
         //   <a href="#">
         //     {' '}
@@ -400,28 +328,175 @@ const Testpage = () => {
         //     新增
         //   </a>
         // }
-      >
-        <Tabs>
-          <TabPane tab="隐患单位库" key="1">
-            <Table
-              columns={columns}
-              dataSource={
-                data
-                // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
-              }
-            ></Table>
-          </TabPane>
-          <TabPane tab="隐患项库" key="2">
-            <Table
-              columns={exceptionFollowUpColumns}
-              dataSource={
-                data
-                // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
-              }
-            ></Table>
-          </TabPane>
-        </Tabs>
-      </Card>
+      > */}
+      <Tabs>
+        <TabPane tab="隐患单位库" key="1">
+          <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
+            <Row>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="shuyo" label="负责人">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Eguzekyūta" label="执行人">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            {expandForm ? (
+              <Row>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                  <Form.Item {...formItemLayout} name="Tantōbumon" label="负责部门">
+                    <Input></Input>
+                  </Form.Item>
+                </Col>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                  <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
+                    <Input></Input>
+                  </Form.Item>
+                </Col>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                  <Form.Item {...formItemLayout} name="shu" label="状态">
+                    <Input></Input>
+                  </Form.Item>
+                </Col>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}></Col>
+              </Row>
+            ) : null}
+            <Row>
+              <Col xxl={19} xl={19} lg={14} sm={14} xs={24}></Col>
+              <Col xxl={5} xl={5} lg={10} sm={20} xs={20}>
+                <Button type="primary" style={{ marginLeft: 20 }} htmlType="submit">
+                  查询
+                </Button>
+                <Button
+                  style={{ marginLeft: 20 }}
+                  type="primary"
+                  htmlType="submit"
+                  onClick={onReset}
+                >
+                  重置
+                </Button>
+                <a style={{ marginLeft: 8 }} onClick={toggleForm}>
+                  {expandForm ? (
+                    <span>
+                      <UpOutlined />
+                      收起
+                    </span>
+                  ) : (
+                    <span>
+                      <DownOutlined />
+                      展开
+                    </span>
+                  )}
+                </a>
+              </Col>
+            </Row>
+          </Form>
+          <Table
+            columns={columns}
+            dataSource={
+              data
+              // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
+            }
+          ></Table>
+        </TabPane>
+        <TabPane tab="隐患项库" key="2">
+          <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
+            <Row>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="shuyo" label="负责人">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Eguzekyūta" label="执行人">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            {expandForm ? (
+              <Row>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                  <Form.Item {...formItemLayout} name="Tantōbumon" label="负责部门">
+                    <Input></Input>
+                  </Form.Item>
+                </Col>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                  <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
+                    <Input></Input>
+                  </Form.Item>
+                </Col>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
+                  <Form.Item {...formItemLayout} name="shu" label="状态">
+                    <Input></Input>
+                  </Form.Item>
+                </Col>
+                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}></Col>
+              </Row>
+            ) : null}
+            <Row>
+              <Col xxl={19} xl={19} lg={14} sm={14} xs={24}></Col>
+              <Col xxl={5} xl={5} lg={10} sm={20} xs={20}>
+                <Button type="primary" style={{ marginLeft: 20 }} htmlType="submit">
+                  查询
+                </Button>
+                <Button
+                  style={{ marginLeft: 20 }}
+                  type="primary"
+                  htmlType="submit"
+                  onClick={onReset}
+                >
+                  重置
+                </Button>
+                <a style={{ marginLeft: 8 }} onClick={toggleForm}>
+                  {expandForm ? (
+                    <span>
+                      <UpOutlined />
+                      收起
+                    </span>
+                  ) : (
+                    <span>
+                      <DownOutlined />
+                      展开
+                    </span>
+                  )}
+                </a>
+              </Col>
+            </Row>
+          </Form>
+          <Table
+            columns={exceptionFollowUpColumns}
+            dataSource={
+              data
+              // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
+            }
+          ></Table>
+        </TabPane>
+      </Tabs>
     </PageContainer>
   );
 };
