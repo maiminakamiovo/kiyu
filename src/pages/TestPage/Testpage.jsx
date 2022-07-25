@@ -1,4 +1,3 @@
-import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { useState } from 'react';
 // import { Access, useAccess } from '@umijs/max';
@@ -333,50 +332,73 @@ const Testpage = () => {
         <TabPane tab="隐患单位库" key="1">
           <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
             <Row>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="ownStreet" label="所属街道">
                   <Input></Input>
                 </Form.Item>
               </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="shuyo" label="负责人">
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="UnitProperty" label="单位属性">
                   <Input></Input>
                 </Form.Item>
               </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
-                  <Input></Input>
-                </Form.Item>
-              </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Eguzekyūta" label="执行人">
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="typeOfVenue" label="场所类型">
                   <Input></Input>
                 </Form.Item>
               </Col>
             </Row>
 
-            {expandForm ? (
-              <Row>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                  <Form.Item {...formItemLayout} name="Tantōbumon" label="负责部门">
-                    <Input></Input>
-                  </Form.Item>
-                </Col>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                  <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
-                    <Input></Input>
-                  </Form.Item>
-                </Col>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                  <Form.Item {...formItemLayout} name="shu" label="状态">
-                    <Input></Input>
-                  </Form.Item>
-                </Col>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}></Col>
-              </Row>
-            ) : null}
             <Row>
-              <Col xxl={19} xl={19} lg={14} sm={14} xs={24}></Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="unitName" label="单位名称">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="checker" label="单位属性">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="InspectionMethod" label="检查方式">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="HazardType" label="隐患类型">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Reviewer" label="复查人">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="RectificationImplementation" label="整改时限">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="HazardType" label="整改进度">
+                  {/* <Input></Input> */}
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Reviewer" label="整改时效">
+                  {/* <Input></Input> */}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row>
+              <Col xxl={1} xl={1} lg={14} sm={14} xs={24}></Col>
               <Col xxl={5} xl={5} lg={10} sm={20} xs={20}>
                 <Button type="primary" style={{ marginLeft: 20 }} htmlType="submit">
                   查询
@@ -389,20 +411,8 @@ const Testpage = () => {
                 >
                   重置
                 </Button>
-                <a style={{ marginLeft: 8 }} onClick={toggleForm}>
-                  {expandForm ? (
-                    <span>
-                      <UpOutlined />
-                      收起
-                    </span>
-                  ) : (
-                    <span>
-                      <DownOutlined />
-                      展开
-                    </span>
-                  )}
-                </a>
               </Col>
+              <Col xxl={18} xl={18} lg={14} sm={14} xs={24}></Col>
             </Row>
           </Form>
           <Table
@@ -437,29 +447,8 @@ const Testpage = () => {
                 </Form.Item>
               </Col>
             </Row>
-
-            {expandForm ? (
-              <Row>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                  <Form.Item {...formItemLayout} name="Tantōbumon" label="负责部门">
-                    <Input></Input>
-                  </Form.Item>
-                </Col>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                  <Form.Item {...formItemLayout} name="Shūryōjikan" label="预计结束时间">
-                    <Input></Input>
-                  </Form.Item>
-                </Col>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                  <Form.Item {...formItemLayout} name="shu" label="状态">
-                    <Input></Input>
-                  </Form.Item>
-                </Col>
-                <Col xxl={6} xl={6} lg={12} sm={24} xs={24}></Col>
-              </Row>
-            ) : null}
             <Row>
-              <Col xxl={19} xl={19} lg={14} sm={14} xs={24}></Col>
+              <Col xxl={1} xl={1} lg={14} sm={14} xs={24}></Col>
               <Col xxl={5} xl={5} lg={10} sm={20} xs={20}>
                 <Button type="primary" style={{ marginLeft: 20 }} htmlType="submit">
                   查询
@@ -472,20 +461,8 @@ const Testpage = () => {
                 >
                   重置
                 </Button>
-                <a style={{ marginLeft: 8 }} onClick={toggleForm}>
-                  {expandForm ? (
-                    <span>
-                      <UpOutlined />
-                      收起
-                    </span>
-                  ) : (
-                    <span>
-                      <DownOutlined />
-                      展开
-                    </span>
-                  )}
-                </a>
               </Col>
+              <Col xxl={18} xl={18} lg={14} sm={14} xs={24}></Col>
             </Row>
           </Form>
           <Table
