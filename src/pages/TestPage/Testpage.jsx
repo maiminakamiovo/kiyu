@@ -426,24 +426,68 @@ const Testpage = () => {
         <TabPane tab="隐患项库" key="2">
           <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
             <Row>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Hazādochekkurisuto" label="隐患排查清单">
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="ownStreet" label="所属街道">
                   <Input></Input>
                 </Form.Item>
               </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="shuyo" label="负责人">
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="UnitProperty" label="单位属性">
                   <Input></Input>
                 </Form.Item>
               </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Kaishijikan" label="预计开始时间">
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="typeOfVenue" label="场所类型">
                   <Input></Input>
                 </Form.Item>
               </Col>
-              <Col xxl={6} xl={6} lg={12} sm={24} xs={24}>
-                <Form.Item {...formItemLayout} name="Eguzekyūta" label="执行人">
+            </Row>
+
+            <Row>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="unitName" label="单位名称">
                   <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="checker" label="单位属性">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="InspectionMethod" label="检查方式">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="HazardType" label="隐患类型">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Reviewer" label="复查人">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="RectificationImplementation" label="整改时限">
+                  <Input></Input>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="HazardType" label="整改进度">
+                  {/* <Input></Input> */}
+                </Form.Item>
+              </Col>
+              <Col xxl={8} xl={8} lg={12} sm={24} xs={24}>
+                <Form.Item {...formItemLayout} name="Reviewer" label="整改时效">
+                  {/* <Input></Input> */}
                 </Form.Item>
               </Col>
             </Row>
