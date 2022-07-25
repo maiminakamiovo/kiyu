@@ -1,8 +1,10 @@
-import { DownOutlined, PlusOutlined, UpOutlined } from '@ant-design/icons';
+import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { useState } from 'react';
 // import { Access, useAccess } from '@umijs/max';
-import { Button, Card, Col, Form, Input, Row, Table } from 'antd';
+import { Button, Card, Col, Form, Input, Row, Table, Tabs } from 'antd';
+
+const { TabPane } = Tabs;
 
 const formItemLayout = {
   labelCol: {
@@ -190,6 +192,109 @@ const Testpage = () => {
     },
   ];
 
+  const exceptionFollowUpColumns = [
+    {
+      title: '异常登记ID',
+      dataIndex: 'nonconformanceId',
+    },
+    {
+      title: '接入单位',
+      dataIndex: 'accessUnitName',
+      width: '10%',
+    },
+    {
+      title: '异常登记',
+      dataIndex: 'registerDate',
+      width: 85,
+      render: (text) => <span>{text ? moment(text).format(timeFormatStr) : ''}</span>,
+    },
+    {
+      title: '整改进度',
+      dataIndex: 'nonconformanceStatusName',
+      width: 70,
+    },
+    {
+      title: '登记人',
+      dataIndex: 'registerPersonName',
+    },
+    {
+      title: '异常对象',
+      dataIndex: 'routInspPointName',
+      width: 80,
+    },
+    {
+      title: '异常地点',
+      width: '8%',
+      dataIndex: 'nonconformanceLocation',
+    },
+    {
+      title: '异常描述',
+      dataIndex: 'detailDescription',
+      width: '15%',
+    },
+    {
+      title: '整改部门',
+      dataIndex: 'correctActionDepatmentName',
+      width: '5%',
+    },
+    {
+      title: '闭环负责人',
+      dataIndex: 'personInChargeName',
+      width: '5%',
+    },
+    {
+      title: '整改项',
+      dataIndex: 'correctActionCount',
+    },
+    {
+      title: '待整改',
+      dataIndex: 'uncommitCount',
+    },
+    {
+      title: '待确认',
+      dataIndex: 'commitCount',
+    },
+    {
+      title: '完成项',
+      dataIndex: 'completeCount',
+    },
+    {
+      title: '完成期限',
+      dataIndex: 'correctActPlanCompleteDate',
+      width: 85,
+      render: (text) => (text ? moment(text).format(dateFormatStr) : ''),
+    },
+    {
+      title: '整改闭环',
+      dataIndex: 'closeDate',
+      width: '5%',
+      render: (text, record) => {
+        if (!text) {
+          return '';
+        } else {
+          return (
+            <span style={{ display: 'inline-block', width: 75 }}>
+              {moment(text).format(timeFormatStr)}
+            </span>
+          );
+        }
+      },
+    },
+    {
+      title: '操作',
+      width: 45,
+      render: (text, record) => (
+        <a
+          href={`detailExceptionFollowUp?nonconformanceId=${record.nonconformanceId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="xfsmart-common xfsmart-see" />
+        </a>
+      ),
+    },
+  ];
+
   const onFinish = (values) => {
     console.log(values);
     const params = Object.keys(values)
@@ -288,21 +393,34 @@ const Testpage = () => {
 
       <Card
         title="隐患排查计划"
-        extra={
-          <a href="#">
-            {' '}
-            <PlusOutlined />
-            新增
-          </a>
-        }
+        // extra={
+        //   <a href="#">
+        //     {' '}
+        //     <PlusOutlined />
+        //     新增
+        //   </a>
+        // }
       >
-        <Table
-          columns={columns}
-          dataSource={
-            data
-            // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
-          }
-        ></Table>
+        <Tabs>
+          <TabPane tab="隐患单位库" key="1">
+            <Table
+              columns={columns}
+              dataSource={
+                data
+                // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
+              }
+            ></Table>
+          </TabPane>
+          <TabPane tab="隐患项库" key="2">
+            <Table
+              columns={exceptionFollowUpColumns}
+              dataSource={
+                data
+                // searchValue===undefined?data:data.filter(index=>index[Object.keys[searchValue]].includes(Object.values[searchValue]))
+              }
+            ></Table>
+          </TabPane>
+        </Tabs>
       </Card>
     </PageContainer>
   );
