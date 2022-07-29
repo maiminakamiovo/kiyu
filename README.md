@@ -10,4 +10,5 @@
 
 git commit -a -m "wqy" --no-verify
 git 快速提交
-ced
+ 
+ 测试重置密钥提交
