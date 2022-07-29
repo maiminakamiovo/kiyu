@@ -7,7 +7,7 @@
     "postinstall": "max setup",
     "prepare": "husky install",
     "setup": "max setup",
-    "start": "npm run dev"
+    "start": "set PORT=99 && npm run dev "
   },
   "config": {
     "commitizen": {
