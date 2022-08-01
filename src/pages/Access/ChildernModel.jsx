@@ -27,6 +27,14 @@ const Childern = (props, ref) => {
   const handleOk = (value) => {
     setModalVisible(false);
   };
+
+  const aa = { age: '18', male: 'false', city: { addres: 'shanghai' } };
+  const bb = { age: '18', male: 'false', city: { addres: 'wuhan' } };
+  const cc = { ...aa, city: { ...bb.city } };
+  console.log(cc);
+  cc.age = '11';
+  console.log(aa);
+  console.log(cc);
   return (
     <Form form={form} ref={ref}>
       <Modal
@@ -107,3 +115,6 @@ export default forwardRef(Childern);
 //     卸载组件要做的事情
 //   }
 // },[])
+
+
+// 拓展运算符 在拷贝基础数据类型的时候属于浅拷贝   拷贝引用数据类型数据 深拷贝
