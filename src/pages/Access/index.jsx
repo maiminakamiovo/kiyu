@@ -2,7 +2,7 @@ import { DownOutlined, PlusOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button, Card, Col, DatePicker, Form, Input, Row, Table } from 'antd';
 import moment from 'moment';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Childern from './ChildernModel';
 
 const formItemLayout = {
@@ -371,11 +371,13 @@ const Testpage = () => {
           </Button>
         }
       >
-        <Table
-          columns={columns}
-          dataSource={searchValue.length > 0 ? searchValue : data}
-          rowKey={uuidv4()}
-        ></Table>
+        <React.Fragment>
+          <Table
+            columns={columns}
+            dataSource={searchValue.length > 0 ? searchValue : data}
+            rowKey={uuidv4()}
+          ></Table>
+        </React.Fragment>
       </Card>
       <Childern
         ref={myRef}
