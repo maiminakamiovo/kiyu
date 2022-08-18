@@ -9,20 +9,16 @@
     "setup": "max setup",
     "start": "cross-env PORT=2001 && npm run dev "
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "commit-msg": "node scripts/verify-commit-msg.js"
-  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
