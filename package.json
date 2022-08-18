@@ -32,6 +32,7 @@
     "babel-plugin-import": "^1.13.5",
     "commitizen": "^4.2.5",
     "dva": "^2.4.1",
+    "echarts": "^5.3.3",
     "moment": "^2.29.4",
     "pnpm": "^7.5.2"
   },
