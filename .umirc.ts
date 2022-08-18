@@ -39,13 +39,7 @@ export default defineConfig({
       path: '/hookls',
       component: './Hookls',
     },
-    {
-      name: '隐患库',
-      path: '/testpage',
-      component: './Testpage',
-    },
   ],
-
   npmClient: 'npm',
   dva: {},
 });
