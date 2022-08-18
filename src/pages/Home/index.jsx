@@ -9,7 +9,7 @@ import {
   WaterMark,
 } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Form, Space, Tooltip } from 'antd';
+import { Button, Form, Space, Tooltip } from 'antd';
 import React from 'react';
 import timestampToTime from '../../components/units';
 import styles from './index.less';
@@ -129,10 +129,10 @@ const Demo = (value) => {
   console.log(element);
   return (
     <React.Fragment>
-      {/* <React.Fragment>{element}</React.Fragment> */}
-      {/* <Button type="primary" onClick={() => setNumber(number + 1)}>
+      <React.Fragment>{element}</React.Fragment>
+      <Button type="primary" onClick={() => setNumber(number + 1)}>
         点击{number}
-      </Button> */}
+      </Button>
     </React.Fragment>
   );
 };
