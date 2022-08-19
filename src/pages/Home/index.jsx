@@ -9,9 +9,9 @@ import {
   WaterMark,
 } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Button, Form, Space, Tooltip } from 'antd';
+import { Affix, Button, Form, Space, Tooltip } from 'antd';
 import React from 'react';
-import timestampToTime from '../../components/units';
+import { timestampToTime } from '../../components/units';
 import styles from './index.less';
 
 const { Statistic } = StatisticCard;
@@ -140,7 +140,7 @@ const Demo = (value) => {
 const HomePage = () => {
   const { name } = useModel('global');
   const [form] = Form.useForm();
-
+  const [top, setTop] = React.useState(10);
   // 深拷贝
   let data = { name: 'wqy', id: '11' };
   let newData = { ...data };
@@ -159,6 +159,11 @@ const HomePage = () => {
         {/* <Guide name={trim(name)} /> */}
         {/*<Demo value={1}></Demo>*/}
       </div>
+      <Affix offsetTop={top}>
+        <Button type="primary" onClick={() => setTop(top + 10)}>
+          qq
+        </Button>
+      </Affix>
       <ProForm form={form}>
         <ProCard direction={'column'} ghost gutter={[0, 8]}>
           <WaterMark content="wqs">
