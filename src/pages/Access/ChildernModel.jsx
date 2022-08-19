@@ -27,25 +27,10 @@ const Childern = (props, ref) => {
   const handleOk = (value) => {
     setModalVisible(false);
   };
-
-  const aa = { age: '18', male: 'false', city: { addres: 'shanghai' } };
-  const bb = { age: '18', male: 'false', city: { addres: 'wuhan' } };
-  const cc = { ...aa, city: { ...bb.city } };
-  console.log(cc);
-  cc.age = '11';
-  console.log(aa);
-  console.log(cc);
-
   const obj_1 = { pro_1: '1' };
   const obj_2 = { pro_2: '2' };
   const mixinObj = Object.assign(obj_1, obj_2);
   console.log(mixinObj);
-
-  const new_person = {
-    a: { name: 'wqy' },
-    b: [age, '18', { title: 'title' }],
-  };
-  console.log(new_person);
   return (
     <Form form={form} ref={ref}>
       <Modal

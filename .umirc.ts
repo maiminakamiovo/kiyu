@@ -6,10 +6,14 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
+  // plugins: ['./plugins/404.jsx'],
   layout: {
-    title: 'umi',
-    logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
+    title: 'kin',
   },
+  //改变主题颜色
+  // theme: {
+  //   '@primary-color': 'pink',
+  // },
 
   routes: [
     {
@@ -20,7 +24,19 @@ export default defineConfig({
     {
       name: '首页',
       path: '/home',
-      component: './Home',
+      // component: './Home',
+      routes: [
+        {
+          name: '首页',
+          path: '/home',
+          component: './Home',
+        },
+        {
+          name: 'dd',
+          path: '/home/belint',
+          component: './Home/Belint',
+        },
+      ],
     },
 
     {

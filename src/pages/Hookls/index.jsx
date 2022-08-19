@@ -7,9 +7,7 @@ const Hookls = () => {
     <PageContainer ghost header={{ title: 'Flex' }}>
       <Layout>
         <Row>
-          <Typography.Title level={3} className={styles.title}>
-            <strong>Hello,flex</strong>
-          </Typography.Title>
+          <Typography.Title level={3} className={styles.title}></Typography.Title>
         </Row>
         <Row>
           <div
