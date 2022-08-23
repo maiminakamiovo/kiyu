@@ -82,6 +82,9 @@ const belint = () => {
     setTD(window.innerHeight / 2);
   }, []);
 
+  const dd = (value) => {
+    console.log(value);
+  };
   return (
     <PageContainer>
       {visible && <Skeleton type="list">ces</Skeleton>}
@@ -136,6 +139,7 @@ const belint = () => {
         </Form.Item>
         <Form.Item label="dd">
           <DatePicker
+            onChange={dd}
             allowClear={true}
             autoFocus={true}
             bordered={false}
