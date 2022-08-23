@@ -10,3 +10,19 @@ git remote update origin --prune 重新拉去远程分支
 <!-- 陆家嘴消防  -->
 
 1.设置 loading 页面初始的时候设置一个 loading false 在 调取页面数据的时候设置 true 在成功或者失败之后再重新设置 true
+
+    <>
+      <Tooltip key="comment-basic-like" title="Like">
+        <span onClick={like}>
+          {createElement(action === 'like' ? LikeFilled : LikeOutlined)}
+          <span className="commen-action">{likes}</span>
+        </span>
+      </Tooltip>
+      <Tooltip key="comment-basic-dislike">
+        <span onClick={disLike}>
+          {createElement(action === 'liked' ? DislikeFilled : DislikeOutlined)}
+          <span className="commen-action">{disLikes}</span>
+        </span>
+      </Tooltip>
+      <span key="comment-basic-reply-to">Reply to</span>
+    </>,
