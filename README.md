@@ -26,3 +26,57 @@ git remote update origin --prune 重新拉去远程分支
       </Tooltip>
       <span key="comment-basic-reply-to">Reply to</span>
     </>,
+
+const nodeBy={ayy:"1"}
+console.log( ayy in nodeBy) //true
+
+对象中添加动态属性
+
+const dy="name"
+const item ={
+[dy]:1
+}
+// 打印出的结果 item:{name:1}
+console.log(item[dy]) // 1
+
+// 使用动态键进行对象解构
+const PersonDay={id:1,name:"vscode"}
+const {name:one}=PersonDay
+console.log(one) // "vscode"
+
+// 使用动态键结构属性
+const templates={
+"hello":"hello hare",
+"bye":"good bye"
+}
+const templateName="bye"
+const {[templateName]:template}=templates
+console.log(templates.template) // good bye
+
+// 检测一个变量是否为 null undefined 时使用？？操作符
+const foo=null??"hello"
+console.log(foo) //hello
+const too=0??"1"
+console.log(too) //这里会输出 0 在 JavaScript 中 0 false 1 true
+// 如果这里使用 || 操作符的话
+const too=0||1
+// 这里就会输出 0
+
+// 将字符串转化成数字
+const Str=“111221” // 这里是一个字符串但是经过下面操作 会将它转化成数字类型
+console.log(+Str) // 这里输出数字类型的 111221
+// 或者
+console.log(Str-0) // 这里输出数字类型的 111221
+
+// 将数字转化成字符串
+const Sty=111
+console.log(sty+"") // 这里输出字符串类型 111
+
+// 检测所提供的日期是否为工作日
+const isWeeKDay=(data)=>data.getDay()%6!==0
+console.log(isWeeKDay(new Data(2022,8,24))) // true 因为今天是周三
+console.log(isWeeKDay(new Data(2022,8,20))) // false 因为今天是周六
+
+// 滚动到页面顶部
+const toTop = () => window.scrollTo(0, 0);
+toTop()
