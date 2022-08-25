@@ -36,6 +36,11 @@ export default defineConfig({
           path: '/home/belint',
           component: './Home/Belint',
         },
+        {
+          name: '穿梭框示例',
+          path: '/home/backpage',
+          component: './Home/backpage',
+        },
       ],
     },
 
