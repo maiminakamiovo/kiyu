@@ -14,10 +14,7 @@ readerStream.on('end', function () {
 });
 readerStream.on('error', function () {
   console.log(err.stack);
-});
-
-console.log('程序执行完毕');
-
+})
 // 文件写入流
 const writerStream = fs.createWriteStream('index.txt');
 // 使用UTF8写入数据
