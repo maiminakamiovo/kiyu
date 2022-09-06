@@ -43,7 +43,7 @@ const Childern = (props, ref) => {
 
   const new_person = {
     a: { name: 'wqy' },
-    b: [age, '18', { title: 'title' }],
+    b: { age: '18', title: 'title' },
   };
   console.log(new_person);
   return (
