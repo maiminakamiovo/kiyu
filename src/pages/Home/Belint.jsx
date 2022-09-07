@@ -2,7 +2,6 @@ import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-d
 import { PageContainer } from '@ant-design/pro-components';
 import {
   Anchor,
-  AutoComplete,
   Avatar,
   Button,
   Collapse,
@@ -47,7 +46,7 @@ const belint = () => {
   };
 
   const onFromSubmit = (value) => {
-    console.log(value);
+    console.log(value); 
   };
 
   const like = () => {
@@ -119,14 +118,14 @@ const belint = () => {
         </Collapse.Panel>
       </Collapse>
 
-      <AutoComplete
+      {/* <AutoComplete
         style={{ withd: 200 }}
         onSearch={onSearch}
         onChange={onChange}
         onSelect={onSelect}
         placeholder="name"
         options={option}
-      />
+      /> */}
 
       <Form colon={true} disabled={false} component={false} scrollToFirstError={true}>
         <Form.Item require dlabel="dd">
@@ -145,6 +144,7 @@ const belint = () => {
             autoFocus={true}
             bordered={false}
             picker="date"
+            //   open={false}
           />
         </Form.Item>
         <Form.Item label="dd">
