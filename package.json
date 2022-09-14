@@ -3,7 +3,7 @@
   "author": "wuqiying <maiminakamiovo@gmail.com>",
   "scripts": {
     "build": "max build",
-    "dev": " cross-env PORT=2001 && max dev",
+    "dev": "cross-env PORT=2001 && max dev",
     "postinstall": "max setup",
     "prepare": "husky install",
     "setup": "max setup",

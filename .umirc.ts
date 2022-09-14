@@ -7,9 +7,7 @@ export default defineConfig({
   initialState: {},
   request: {},
   // plugins: ['./plugins/404.jsx'],
-  layout: {
-    title: 'kin',
-  },
+  layout: {},
   //改变主题颜色
   // theme: {
   //   '@primary-color': 'pink',
@@ -18,31 +16,31 @@ export default defineConfig({
   routes: [
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/access',
     },
 
-    {
-      name: '首页',
-      path: '/home',
-      // component: './Home',
-      routes: [
-        {
-          name: '首页',
-          path: '/home',
-          component: './Home',
-        },
-        {
-          name: 'dd',
-          path: '/home/belint',
-          component: './Home/Belint',
-        },
-        {
-          name: '穿梭框示例',
-          path: '/home/backpage',
-          component: './Home/backpage',
-        },
-      ],
-    },
+    // {
+    //   name: '首页',
+    //   path: '/home',
+    //   // component: './Home',
+    //   routes: [
+    //     {
+    //       name: '首页',
+    //       path: '/home',
+    //       component: './Home',
+    //     },
+    //     {
+    //       name: 'dd',
+    //       path: '/home/belint',
+    //       component: './Home/Belint',
+    //     },
+    //     {
+    //       name: '穿梭框示例',
+    //       path: '/home/backpage',
+    //       component: './Home/backpage',
+    //     },
+    //   ],
+    // },
 
     {
       name: '增删改查示例',
@@ -50,16 +48,16 @@ export default defineConfig({
       component: './Access',
     },
 
-    {
-      name: 'Table示例',
-      path: '/table',
-      component: './Table',
-    },
-    {
-      name: ' flex示例',
-      path: '/hookls',
-      component: './Hookls',
-    },
+    // {
+    //   name: 'Table示例',
+    //   path: '/table',
+    //   component: './Table',
+    // },
+    // {
+    //   name: ' flex示例',
+    //   path: '/hookls',
+    //   component: './Hookls',
+    // },
   ],
   npmClient: 'npm',
   dva: {},
