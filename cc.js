@@ -1,172 +1,242 @@
-/**
- * @file:   隐患项组件
- * @author: wuqiying
- */
+<view class="loginbox">
+    <view class="logincenter">
+        <view class="loginbgfirst">
+            <view class="loginbgsecond">
+                <view class="loginbgthird">
+                    <button open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" class="loginpcicon">
+                        <image class="loginheader" mode="widthFix" src="{{avatarUrl?avatarUrl:'https://bh-marcom-php.oss-cn-shanghai.aliyuncs.com/mini-fhc/files/iconheader.png'}}"></image>
+                    </button>
+                </view>
+            </view>
+        </view>
+        <view class="logincentertitle">点击上方更换头像</view>
+        <view class="logincenterauthorize">
+            <view class="imgbg">
+                <image mode="widthFix" class="authorizeimg" src="https://bh-marcom-php.oss-cn-shanghai.aliyuncs.com/mini-fhc/files/lujing.png"></image>
+            </view>
+            <input type="nickname" bindblur="get_nickname" class="authorizeinput" value="{{nickname}}" placeholder="请输入昵称" placeholder-class="placeholderStyle" />
+        </view>
+    </view>
+    <block wx:if="{{author_name}}">
+        <view class="background-box">
+            <view class="background-title-box">
+                <view class="button-login" bindtap="getUserProfile">
+                    授权个人信息
+                </view>
+                <view class="button-text">
+                    <text>同意注册成为小程序用户</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{author_phone}}">
+        <view class="background-box">
+            <view class="background-title-box">
+                <button class="button-login" style="width: 600rpx;" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+                    授权手机号
+                </button>
+                <view class="button-text">
+                    <text>同意注册成为小程序用户</text>
+                </view>
+            </view>
+        </view>
+    </block>
 
-import { useState } from 'react';
-import { Tag, Row, Col, Form, Modal, Table } from 'antd';
-import { ProCard } from '@ant-design/pro-components';
-import { CheckCircleOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import ImgUpload from 'component/imgUpload';
-import '../findHiddenDangerLibrary/index.less';
+</view>
 
-const HiddenItem = (props) => {
-    const { index } = props;
-    const [visible, setVisible] = useState(false);
-    const formItemLayout4 = {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 16 },
-    };
-    const formItemLayout3 = {
-        labelCol: { span: 4 },
-        wrapperCol: { span: 20 },
-    };
-    // 先判定超期，再判定临期
-    function getCurrentItemStatus(item) {
-        // 整改完成，复查时间晚于整改期限，为超期
-        if (item.correctStatus === 'Y' && item.reviewTime && moment(item.correctTime).diff(moment(item.reviewTime), 'days') < 0) {
-            return <Tag className="rectificationHeightofDetails">整改超期</Tag>;
-        }
-        const nowTime = moment().format('YYYY-MM-DD');
-        // 整改中，当前时间超过整改期限，为超期
-        if (item.correctStatus !== 'Y' && moment(item.correctTime).diff(moment(nowTime), 'days') < 0) {
-            return <Tag className="rectificationHeightofDetails">整改超期</Tag>;
-        }
-        // 整改中，判断是否整改临期
-        if (item.correctStatus !== 'Y' && moment(item.correctTime).diff(moment(nowTime), 'days') <= 3) {
-            return <Tag className="rectificationCenterofDetails">整改临期</Tag>;
-        }
-    }
 
-    const columns = [
-        {
-            width: 35,
-            render: (text) => <div className="borderRadius"></div>,
-        },
-        {
-            title: '整改期限',
-            dataIndex: 'correctTime',
-            key: 'correctTime',
-        },
-        {
-            title: '复查日期',
-            dataIndex: 'reviewTime',
-            key: 'reviewTime',
-        },
-        {
-            title: '整改结果',
-            dataIndex: 'correctStatus',
-            render: (recond) =>
-                recond.correctStatus === 'Y' ? <span>复查通过</span> : recond.correctStatus === 'N' ? <span>复查未通过</span> : <span>待复查</span>,
-        },
-    ];
-    return (
-        <ProCard
-            bordered
-            title={
-                <span>
-                    隐患项&nbsp;<a style={{ color: '#1890ff' }}>{index.sequenceId}</a>
-                </span>
+
+
+
+
+
+
+
+
+<!-- <view class="container" style="background: url(https://bh-marcom-php.oss-cn-shanghai.aliyuncs.com/mini-fhc/files/login.png) no-repeat;background-size: 100%">
+    <block wx:if="{{author_name}}">
+        <view class="background-box">
+      <view class="background-title-box">
+        <view class="button-login" bindtap="getUserProfile">
+          授权昵称
+        </view>
+        <view class="button-text">
+          <text>同意注册成为小程序用户</text>
+        </view>
+      </view>
+    </view>
+       
+    </block>
+    <block wx:if="{{author_phone}}">
+        <view class="background-box">
+            <view class="background-title-box">
+                <button class="button-login" style="width: 600rpx;" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+                    授权手机号
+                </button>
+                <view class="button-text">
+                    <text>同意注册成为小程序用户</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view> -->
+
+
+
+
+
+
+
+
+
+let big = getApp();
+big.createPage({
+    data: {
+        source_id: 0,
+        // country_array: [],
+        author_name: true,
+        author_phone: false,
+        avatarUrl: '', //头像
+        nickname: '',  //昵称
+    },
+
+    onLoad: function (options) {
+        let that = this
+        var source_id = wx.getStorageSync('source_id')
+        if (source_id) {
+            that.setData({
+                source_id: source_id
+            })
+        } else {
+            that.get_jump()
+        }
+    },
+    // 获取source
+    get_jump: function () {
+        let that = this;
+        big.request('api/get_source_info', {}).then(res => {
+            if (res.success == 1) {
+                that.setData({
+                    source_id: res.data.id
+                })
             }
-            className="cardHeader"
-            extra={index.correctStatus !== 'Y' ? <Tag className="rectification">整改中</Tag> : <Tag className="rectificationCompletedOfDetails">整改完成</Tag>}
-            style={{ fontSize: '14px', fontFamily: 'Regular', display: 'flex', marginBottom: '20px' }}
-        >
-            <Row>
-                <Col span={18}>
-                    <Form.Item {...formItemLayout3} label="隐患地点">
-                        {index.hiddenPlace}
-                    </Form.Item>
-                </Col>
-            </Row>
-            <Row>
-                <Col span={18}>
-                    <Form.Item {...formItemLayout3} label="隐患内容">
-                        <span>{index.hiddenContent}</span>
-                    </Form.Item>
-                </Col>
-            </Row>
-            <Row>
-                <Col span={18}>
-                    <Form.Item {...formItemLayout3} label="隐患类型">
-                        {index.hiddenType}
-                    </Form.Item>
-                </Col>
-            </Row>
+        });
+    },
+    // 授权头像
+    onChooseAvatar(e) {
+        const { avatarUrl } = e.detail
+        console.log(e.detail)
+        this.setData({
+            avatarUrl,
+        })
+    },
+    // 获取昵称
+    get_nickname: function (e) {
+        console.log(e.detail.value)
+        let that = this
+        if (e.detail.value) {
+            that.setData({
+                nickname: e.detail.value
+            })
+        } else {
 
-            <Row>
-                <Col span={9}>
-                    <Form.Item {...formItemLayout4} label="隐患等级">
-                        {index.hiddenLevelName === '高风险' ? (
-                            <Tag className="hihigherDangergherDanger">{index.hiddenLevelName}</Tag>
-                        ) : index.hiddenLevelName === '中风险' ? (
-                            <Tag className="middinDanger"> {index.hiddenLevelName}</Tag>
-                        ) : index.hiddenLevelName === null || undefined || index.hiddenLevelName.length === 0 ? (
-                            <></>
-                        ) : (
-                            <Tag className="lowDanger"> {index.hiddenLevelName}</Tag>
-                        )}
-                    </Form.Item>
-                </Col>
-                <Col span={9}>
-                    <Form.Item {...formItemLayout4} label="整改时限">
-                        {index.correctTime}
-                        &nbsp;&nbsp;
-                        {getCurrentItemStatus(index)}
-                    </Form.Item>
-                </Col>
-            </Row>
-            <Row>
-                <Col span={9}>
-                    <Form.Item {...formItemLayout4} label="复查结果">
-                        {index.correctStatus === 'Y' ? (
-                            <span>
-                                复查通过&nbsp;
-                                <CheckCircleOutlined style={{ color: 'green' }} />
-                            </span>
-                        ) : index.correctStatus === 'N' ? (
-                            <span>
-                                复查未通过&nbsp;
-                                <InfoCircleOutlined style={{ color: 'red' }} />
-                            </span>
-                        ) : (
-                            <span>待复查</span>
-                        )}
-                    </Form.Item>
-                </Col>
-                <Col span={9}>
-                    <Form.Item {...formItemLayout4} label="复查时间">
-                        {index.reviewTime}
-                    </Form.Item>
-                </Col>
-            </Row>
-            <Row>
-                <Col span={18}>
-                    <Form.Item {...formItemLayout3} label="附件">
-                        <ImgUpload
-                            fieldName="contentIds"
-                            maxNumLimit={12}
-                            fileSizeLimit={10}
-                            listType="text"
-                            defaultValue={index.contentList}
-                            hideRemoveIcon={true}
-                            hideUploadBtn={true}
-                        />
-                    </Form.Item>
-                </Col>
-            </Row>
-            {index.hdirhList.length !== 0 && (
-                <Col span={18}>
-                    <Form.Item {...formItemLayout3} label="整改历史">
-                        <a onClick={() => setVisible(true)}>查看历史</a>
-                    </Form.Item>
-                </Col>
-            )}
-            <Modal className="ModelOfHIddenborderLine" visible={visible} title="整改历史" onOk={() => setVisible(false)} onCancel={() => setVisible(false)}>
-                <Table pagination={false} dataSource={index.hdirhList} columns={columns} />
-            </Modal>
-        </ProCard>
-    );
-};
-export default HiddenItem;
+        }
+    },
+
+    // 个人信息
+    getUserProfile(e) {
+        let that = this
+        let avatarUrl = that.data.avatarUrl
+        let nickName = that.data.nickname
+        let userinfo = {
+            avatarUrl,
+            nickName
+        }
+        console.log(userinfo)
+        if (avatarUrl == '') {
+            wx.showToast({
+                title: '您还未设置头像',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+        if (nickName == undefined) {
+            wx.showToast({
+                title: '请输入昵称',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+        big.request('api/update_wx_info', {
+            nickName: nickName,
+            avatarUrl: avatarUrl,
+            source_id: that.data.source_id,
+        }, 'post').then(res => {
+            if (res.success) {
+                wx.setStorageSync('userinfo', userinfo);
+                that.setData({
+                    author_name: false,
+                    author_phone: true
+                })
+            } else {
+                wx.showToast({
+                    title: '授权失败,请清除缓存后再次尝试',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        });
+    },
+    // 用户授权手机号
+    getPhoneNumber(e) {
+        console.log('e是什么', e)
+        if (e.detail.errMsg == 'getPhoneNumber:ok') {
+            big.request('api/save_mobile', {
+                endata: e.detail.encryptedData,
+                iv: e.detail.iv,
+            }, 'post').then(res => {
+                if (res.success) {
+                    wx.setStorageSync('mobile', res.data.mobile);
+                    wx.setStorageSync('is_ticket', res.data.is_ticket)
+                    if (res.data.is_coupon_user == 1) {
+                        wx.setStorageSync('scanning', true);
+                        wx.reLaunch({
+                            url: '/pages/scanning/scanning',
+                        })
+                    } else {
+                        wx.setStorageSync('scanning', false);
+                        wx.navigateBack({
+                            delta: 1,
+                            success: (res) => {
+                                console.log('navigateBack success', res)
+                            },
+                            fail: (res) => {
+                                console.log('navigateBack fail', res)
+                                wx.reLaunch({
+                                    url: '/pages/index/index'
+                                })
+                            }
+                        })
+                    }
+                } else {
+                    console.log('授权手机号失败')
+                }
+            });
+        } else {
+            console.log('拒绝哦')
+        }
+    },
+
+    // 转发朋友圈
+    onShareTimeline: function (res) {
+        return {
+            title: 'FHC上海环球食品展',
+            query: '',
+            imageUrl: ''
+        }
+    },
+    onReady: function () { },
+    onShow: function () { },
+    onHide: function () { },
+    onUnload: function () { },
+})

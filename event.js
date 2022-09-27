@@ -22,3 +22,36 @@
 
 // // 创建一个包含 UTF-8字节 [0x74,0xc3,0xa9,0x73,0,73]的buffer
 // const buf5 = Buffer.from('text');
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const targetThis = 9
+let arrayMap=[]
+for (let index = 0; index < array.length; index++) {
+    if (array[index] + array[index + 1] === 9) {
+        console.log(array[index], array[index + 1]);
+        const indexOne = array.findIndex(dd => dd === array[index])
+        const indexTwo = array.findIndex(dd => dd === array[index + 1])
+        console.log(indexOne, indexTwo);
+    }
+}
+
+
+function test(person) {
+    person.age = 26
+    person = {
+      name: 'hzj',
+      age: 18
+    }
+    return person
+  }
+  const p1 = {
+    name: 'fyq',
+    age: 19
+  }
+
+  const p2 = test(p1)
+  console.log(p2);
+  console.log(p1);
+
+
+//   原始数据类型 除了 null 都可以被typeof 判断   引用数据类型除了 function外都会被判断Object

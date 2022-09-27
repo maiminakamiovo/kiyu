@@ -53,11 +53,11 @@ export default defineConfig({
     //   path: '/table',
     //   component: './Table',
     // },
-    // {
-    //   name: ' flex示例',
-    //   path: '/hookls',
-    //   component: './Hookls',
-    // },
+    {
+      name: '可编辑表格转换class示例',
+      path: '/hookls',
+      component: './Hookls',
+    },
   ],
   npmClient: 'npm',
   dva: {},

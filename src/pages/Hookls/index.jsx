@@ -1,59 +1,35 @@
-import { PageContainer } from '@ant-design/pro-components';
-import { Layout, Row, Typography } from 'antd';
-import styles from '../../components/Guide/Guide.less';
+class LoginControl extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = { isLoggedIn: false };
+  }
 
-const Hookls = () => {
-  return (
-    <PageContainer ghost header={{ title: 'Flex' }}>
-      <Layout>
-        <Row>
-          <Typography.Title level={3} className={styles.title}></Typography.Title>
-        </Row>
-        <Row>
-          <div
-            style={{
-              display: 'flex',
-              height: '100%',
-              width: '100%',
-              justifyContent: 'center',
-            }}
-          >
-            <div
-              style={{
-                height: '200px',
-                width: '200px',
-                backgroundColor: 'pink',
-                marginLeft: '10px',
-              }}
-            ></div>
-            <div
-              style={{
-                height: '200px',
-                width: '200px',
-                backgroundColor: 'plum',
-                marginLeft: '10px',
-              }}
-            ></div>
-            <div
-              style={{
-                height: '200px',
-                width: '200px',
-                backgroundColor: 'yellow',
-                marginLeft: '10px',
-              }}
-            ></div>
-          </div>
-        </Row>
-        <Row>
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <Typography.Title level={4} className={styles.title}>
-              <strong>flex start</strong>
-            </Typography.Title>
-          </div>
-        </Row>
-      </Layout>
-    </PageContainer>
-  );
-};
+  handleLoginClick() {
+    this.setState({ isLoggedIn: true });
+  }
 
-export default Hookls;
+  handleLogoutClick() {
+    this.setState({ isLoggedIn: false });
+  }
+
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    let button;
+    if (isLoggedIn) {
+      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      button = <LoginButton onClick={this.handleLoginClick} />;
+    }
+
+    return (
+      <div>
+        <Greeting isLoggedIn={isLoggedIn} />
+        {button}
+      </div>
+    );
+  }
+}
+
+export default LoginControl;

@@ -1,6 +1,6 @@
 import { DownOutlined, PlusOutlined, UpOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
-import { Button, Card, Col, DatePicker, Form, Input, Row, Table } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Table, Descriptions, Badge } from 'antd';
 import moment from 'moment';
 import React, { useRef, useState } from 'react';
 import Childern from './ChildernModel';
@@ -352,8 +352,7 @@ const Testpage = () => {
                   </span>
                 ) : (
                   <span>
-                    <DownOutlined />
-                    展开
+                    <DownOutlined /> 展开
                   </span>
                 )}
               </a>
@@ -361,7 +360,17 @@ const Testpage = () => {
           </Row>
         </Form>
       </Card>
-
+      <Descriptions title="User Info">
+        <Descriptions.Item label="Product">Cloud Database</Descriptions.Item>
+        <Descriptions.Item label="Billing Mode">Prepaid</Descriptions.Item>
+        <Descriptions.Item label="Automatic Renewal">YES</Descriptions.Item>
+        <Descriptions.Item span={2} label="Billing Mode">
+          Prepaid
+        </Descriptions.Item>
+        <Descriptions.Item span={0} label="Usage Time">
+          2019-04-24 18:00:00
+        </Descriptions.Item>
+      </Descriptions>
       <Card
         title="隐患排查计划"
         extra={
